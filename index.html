@@ -76,7 +76,12 @@ for(let i=1;i<=50;i++){
   img.onload = () => {
     img.onclick = () => abrir(img.src);
     galeria.appendChild(img);
-  }
+  };
+
+  // 🔥 esto evita cuadros vacíos
+  img.onerror = () => {
+    console.log("No existe:", img.src);
+  };
 }
 </script>
 
