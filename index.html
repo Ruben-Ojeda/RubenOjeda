@@ -23,25 +23,35 @@ h2{border-left:4px solid #d4af37;padding-left:10px;margin-bottom:20px;}
 .carousel-wrapper{position:relative;}
 .carousel{
   display:flex;
-  gap:12px;
+  gap:16px;
   overflow-x:auto;
   scroll-behavior:smooth;
   padding:10px 5px;
 }
 .carousel::-webkit-scrollbar{display:none;}
 
-.carousel img{
-  min-width:220px;
-  height:140px;
-  object-fit:cover;
-  border-radius:10px;
+/* CONTENEDOR PARA CENTRAR PERFECTO */
+.carousel-item{
+  min-width:240px;
+  height:160px;
+  background:#000;
+  border-radius:12px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
   transition:.4s;
-  cursor:pointer;
 }
 
-.carousel img:hover{
-  transform:scale(1.25);
+.carousel-item:hover{
+  transform:scale(1.15);
   z-index:5;
+}
+
+.carousel-item img{
+  max-width:100%;
+  max-height:100%;
+  object-fit:contain;
 }
 
 .nav-btn{
@@ -56,7 +66,6 @@ h2{border-left:4px solid #d4af37;padding-left:10px;margin-bottom:20px;}
   cursor:pointer;
   z-index:10;
 }
-
 .left{left:0;}
 .right{right:0;}
 
@@ -77,8 +86,7 @@ footer{text-align:center;padding:30px;opacity:.6;}
 
 <section>
 <h2>Sobre mí</h2>
-<p>Soy productor de arte especializado en el desarrollo de proyectos culturales, eventos y experiencias escénicas. 
-    Trabajo en la gestión integral de propuestas artísticas, combinando creatividad, organización y visión estratégica.</p>
+<p>Producción artística, eventos culturales y experiencias escénicas.</p>
 </section>
 
 <section>
@@ -114,18 +122,21 @@ footer{text-align:center;padding:30px;opacity:.6;}
 <script>
 const galeria = document.getElementById("galeria");
 
-// CARGA INTELIGENTE (sin huecos)
 for(let i=1;i<=50;i++){
   const img = new Image();
   img.src = `imagenes/FOTO${i}.jpeg`;
 
   img.onload = () => {
+    const item = document.createElement("div");
+    item.className = "carousel-item";
+
     img.onclick = () => abrir(img.src);
-    galeria.appendChild(img);
+
+    item.appendChild(img);
+    galeria.appendChild(item);
   };
 }
 
-// SCROLL BOTONES
 function scrollLeft(){
   galeria.scrollBy({left:-400,behavior:'smooth'});
 }
@@ -134,7 +145,6 @@ function scrollRight(){
   galeria.scrollBy({left:400,behavior:'smooth'});
 }
 
-// MODAL
 function abrir(src){
  document.getElementById('modal').style.display='block';
  document.getElementById('img').src=src;
