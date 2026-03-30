@@ -67,23 +67,16 @@ footer{text-align:center;padding:30px;opacity:.6;}
 <footer>© 2026 Rubén Ojeda</footer>
 
 <script>
-// LISTA AUTOMÁTICA DE IMÁGENES
-const totalFotos = 19; //
 const galeria = document.getElementById("galeria");
 
-for(let i=1;i<=totalFotos;i++){
-  const img = document.createElement("img");
+for(let i=1;i<=50;i++){
+  const img = new Image();
   img.src = `imagenes/FOTO${i}.jpeg`;
-  img.onclick = () => abrir(img.src);
-  galeria.appendChild(img);
-}
 
-function abrir(src){
- document.getElementById('modal').style.display='block';
- document.getElementById('img').src=src;
-}
-function cerrar(){
- document.getElementById('modal').style.display='none';
+  img.onload = () => {
+    img.onclick = () => abrir(img.src);
+    galeria.appendChild(img);
+  }
 }
 </script>
 
