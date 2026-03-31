@@ -8,13 +8,25 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
-body {margin:0;font-family:'Inter',sans-serif;background:#0a0a0a;color:#fff;}
+body {
+  margin:0;
+  font-family:'Inter',sans-serif;
+  background:#0a0a0a;
+  color:#fff;
+  -webkit-font-smoothing: antialiased;
+}
 header {height:100vh;background:linear-gradient(rgba(0,0,0,.7),rgba(0,0,0,.7)), url('imagenes/FOTO1.jpeg') center/cover;display:flex;align-items:center;justify-content:center;text-align:center;}
 h1{font-family:'Playfair Display',serif;font-size:4rem;animation:fadeIn 2s ease;}
 .subtitle{color:#d4af37;margin-top:10px;font-size:1.4rem;animation:fadeIn 3s ease;}
 @keyframes fadeIn{from{opacity:0; transform:translateY(20px);} to{opacity:1; transform:translateY(0);} }
 section{padding:80px 20px;max-width:1200px;margin:auto;}
-h2{border-left:4px solid #d4af37;padding-left:10px;margin-bottom:20px;}
+h2{
+  border-left:4px solid #d4af37;
+  padding-left:10px;
+  margin-bottom:20px;
+  font-weight:600;
+  letter-spacing:1px;
+}
 .projects{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px;}
 .card{background:#111;padding:20px;border-radius:15px;transition:.3s;}
 .card:hover{transform:translateY(-8px);box-shadow:0 10px 30px rgba(212,175,55,.3);} 
@@ -49,22 +61,35 @@ h2{border-left:4px solid #d4af37;padding-left:10px;margin-bottom:20px;}
 }
 
 .carousel-item img{
-  max-width:100%;
-  max-height:100%;
-  object-fit:contain;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  transition:transform .4s ease;
+}
+
+.carousel-item:hover img{
+  transform:scale(1.1);
 }
 
 .nav-btn{
   position:absolute;
-  top:40%;
+  top:50%;
   transform:translateY(-50%);
-  background:rgba(0,0,0,.6);
+  background:rgba(0,0,0,.5);
+  backdrop-filter:blur(6px);
   border:none;
   color:#fff;
-  font-size:25px;
-  padding:10px;
+  font-size:28px;
+  padding:12px 16px;
   cursor:pointer;
   z-index:10;
+  border-radius:50%;
+  transition:.3s;
+}
+
+.nav-btn:hover{
+  background:#d4af37;
+  color:#000;
 }
 .left{left:0;}
 .right{right:0;}
@@ -163,15 +188,20 @@ for(let i=1;i<=50;i++){
   const img = new Image();
   img.src = `imagenes/FOTO${i}.jpeg`;
 
-  img.onload = () => {
-    const item = document.createElement("div");
-    item.className = "carousel-item";
+ img.style.opacity = 0;
 
-    img.onclick = () => abrir(img.src);
+img.onload = () => {
+  img.style.transition = "opacity 0.8s ease";
+  img.style.opacity = 1;
 
-    item.appendChild(img);
-    galeria.appendChild(item);
-  };
+  const item = document.createElement("div");
+  item.className = "carousel-item";
+
+  img.onclick = () => abrir(img.src);
+
+  item.appendChild(img);
+  galeria.appendChild(item);
+};
 }
 
 function scrollLeft(){
