@@ -427,8 +427,19 @@ for(let i=1;i<=50;i++){
   };
 }
 
-function scrollLeft(){galeria.scrollBy({left:-400,behavior:'smooth'});}
-function scrollRight(){galeria.scrollBy({left:400,behavior:'smooth'});}
+function scrollLeft(){
+  document.getElementById("galeria").scrollBy({
+    left: -400,
+    behavior: "smooth"
+  });
+}
+
+function scrollRight(){
+  document.getElementById("galeria").scrollBy({
+    left: 400,
+    behavior: "smooth"
+  });
+}
 
 function abrir(src){
  document.getElementById('modal').style.display='block';
