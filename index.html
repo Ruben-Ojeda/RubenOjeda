@@ -152,9 +152,10 @@ h2{
   font-size:28px;
   padding:12px 16px;
   cursor:pointer;
-  z-index:10;
   border-radius:50%;
   transition:.3s;
+  z-index: 50;
+pointer-events: auto;
 }
 
 .nav-btn:hover{
@@ -309,9 +310,9 @@ footer{
 <section>
 <h2>Galería</h2>
 <div class="carousel-wrapper">
-  <button class="nav-btn left" onclick="scrollLeft()">❮</button>
+ <button class="nav-btn left" onclick="scrollGaleria(-400)">❮</button>
   <div class="carousel" id="galeria"></div>
-  <button class="nav-btn right" onclick="scrollRight()">❯</button>
+ <button class="nav-btn right" onclick="scrollGaleria(400)">❯</button>
 </div>
 </section>
 
@@ -427,18 +428,9 @@ for(let i=1;i<=50;i++){
   };
 }
 
-function scrollLeft(){
-  document.getElementById("galeria").scrollBy({
-    left: -400,
-    behavior: "smooth"
-  });
-}
-
-function scrollRight(){
-  document.getElementById("galeria").scrollBy({
-    left: 400,
-    behavior: "smooth"
-  });
+function scrollGaleria(valor){
+  const contenedor = document.getElementById("galeria");
+  contenedor.scrollLeft += valor;
 }
 
 function abrir(src){
