@@ -283,10 +283,26 @@ footer{
     Performances visuales y corporales que transforman el espacio en espectáculo.
   </p>
 </div>
+<div class="card escenica-card" onclick="abrirArtes()">
+  <h3>Artes en Movimiento</h3>
+  <p class="subtitle">
+    Expresiones corporales que fusionan tradición, técnica y emoción.
+  </p>
+</div>
 
-<div class="card">Eventos Culturales</div>
-<div class="card">Gestión Creativa</div>
+<div class="card escenica-card" onclick="abrirClases()">
+  <h3>Clases</h3>
+  <p class="subtitle">
+    Formación y entrenamiento artístico para todos los niveles.
+  </p>
+</div>
 
+<div class="card escenica-card" onclick="abrirAlquiler()">
+  <h3>Alquiler</h3>
+  <p class="subtitle">
+    Recursos profesionales para potenciar producciones y espectáculos.
+  </p>
+</div>
 </div>
 </section>
 
@@ -316,6 +332,60 @@ footer{
       <div class="card"><h3>🔥 Elementos de Fuego</h3></div>
       <div class="card"><h3>💡 Luces LED</h3></div>
       <div class="card"><h3>🌌 Inmersiones Temáticas</h3></div>
+    </div>
+  </div>
+</div>
+  <!-- ARTES EN MOVIMIENTO -->
+<div id="artesModal" class="escenicas-modal">
+  <span class="cerrar" onclick="cerrarArtes()">&times;</span>
+  <div class="escenicas-content">
+    <h2>Artes en Movimiento</h2>
+    <p class="subtitle">
+      Expresiones corporales que fusionan tradición, técnica y emoción.
+    </p>
+    <div class="cards">
+      <div class="card">Contemporáneo</div>
+      <div class="card">Tango</div>
+      <div class="card">Folklore</div>
+      <div class="card">Malambo</div>
+      <div class="card">Fantasía</div>
+    </div>
+  </div>
+</div>
+
+<!-- CLASES -->
+<div id="clasesModal" class="escenicas-modal">
+  <span class="cerrar" onclick="cerrarClases()">&times;</span>
+  <div class="escenicas-content">
+    <h2>Clases</h2>
+    <p class="subtitle">
+      Formación y entrenamiento artístico para todos los niveles.
+    </p>
+    <div class="cards">
+      <div class="card">Danza</div>
+      <div class="card">Malambo</div>
+      <div class="card">Bombo</div>
+      <div class="card">Boleadoras</div>
+      <div class="card">Poncho</div>
+      <div class="card">Acrobacias</div>
+    </div>
+  </div>
+</div>
+
+<!-- ALQUILER -->
+<div id="alquilerModal" class="escenicas-modal">
+  <span class="cerrar" onclick="cerrarAlquiler()">&times;</span>
+  <div class="escenicas-content">
+    <h2>Alquiler</h2>
+    <p class="subtitle">
+      Recursos profesionales para potenciar producciones y espectáculos.
+    </p>
+    <div class="cards">
+      <div class="card">Vestuarios</div>
+      <div class="card">Equipos Aéreos</div>
+      <div class="card">Equipos de Circo</div>
+      <div class="card">Utilería</div>
+      <div class="card">Accesorios</div>
     </div>
   </div>
 </div>
@@ -376,6 +446,29 @@ function abrirEscenicas(){
 
 function cerrarEscenicas(){
   document.getElementById("escenicasModal").style.display = "none";
+}
+  function abrirArtes(){
+  document.getElementById("artesModal").style.display = "flex";
+}
+
+function cerrarArtes(){
+  document.getElementById("artesModal").style.display = "none";
+}
+
+function abrirClases(){
+  document.getElementById("clasesModal").style.display = "flex";
+}
+
+function cerrarClases(){
+  document.getElementById("clasesModal").style.display = "none";
+}
+
+function abrirAlquiler(){
+  document.getElementById("alquilerModal").style.display = "flex";
+}
+
+function cerrarAlquiler(){
+  document.getElementById("alquilerModal").style.display = "none";
 }
 </script>
 
